@@ -6,8 +6,7 @@ from typing import Any, Type
 
 import nbformat
 from jupyter_server.services.contents.checkpoints import Checkpoints
-from jupyter_server.services.contents.filecheckpoints import \
-    GenericFileCheckpoints
+from jupyter_server.services.contents.filecheckpoints import GenericFileCheckpoints
 from jupyter_server.services.contents.manager import ContentsManager
 from pyarrow import fs
 from tornado import web
@@ -171,7 +170,7 @@ class ArrowContentsManager(ContentsManager):
         if fi.type is fs.FileType.Directory and type in (None, MODEL_TYPE_DIRECTORY):
             model = self._dir_model(fi, path, content=content)
         elif (
-            fi.type is fs.FileType
+            fi.type is fs.FileType.File
             and type == MODEL_TYPE_NOTEBOOK
             or (type is None and path.endswith(NOTEBOOK_EXTENSION))
         ):
